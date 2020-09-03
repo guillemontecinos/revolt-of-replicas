@@ -51,7 +51,12 @@ const osc = new OSC({ plugin: new OSC.DatagramPlugin(options) })
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'))
+	res.sendFile(path.join(__dirname + '/public/welcome.html'))
+})
+
+app.get('/experience', function (req, res) {
+	console.log('request to experience received')
+    res.sendFile(path.join(__dirname + '/public/experience.html'))
 })
 
 app.get('/reality', function (req, res) {

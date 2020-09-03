@@ -52,6 +52,18 @@ table {
   border-spacing: 0;
 }
 
+.welcome-text {
+  height: 500px;
+}
+
+.start-button button {
+  width: 50%;
+  height: 150px;
+  -webkit-transform: translate(50%, 0%);
+          transform: translate(50%, 0%);
+  font-size: 50px;
+}
+
 header {
   background: #fff;
 }

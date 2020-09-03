@@ -8,6 +8,9 @@ let prevTop = 0
 let screenshotCue = 22
 let screenshotDisplay = 0
 
+let sessionTime = 0
+const sessionLength = 10 // in seconds
+
 let path = "/feed-content/feed-content.json"
 
 const today = new Date()
@@ -15,7 +18,7 @@ const week = 7 * 24 * 60 * 60 * 1000 //ms in a week
 
 // Source: https://socket.io/docs/#Using-with-Express
 // TODO: update this address with the current IP
-let socket = io.connect('http://192.168.1.5')
+let socket = io.connect('http://192.168.1.6')
 socket.on('connection answer', function(data){
     console.log(data)
 })
@@ -132,7 +135,9 @@ function appendDivElement(jsonObject, isScreenshot){
     }
     else
     {
-        contentImg.src = jsonObject.display_url
+        let str = jsonObject.display_url.split('/')
+        let strLen = str.length
+        contentImg.src = '/feed-content/' + str[strLen - 1].split('?')[0]
     }
     
     // creates cardFooter and components =========================
@@ -287,3 +292,13 @@ const months = [
     'November',
     'December'
 ]
+
+// set timer to end the experiencia once it has been started
+setInterval(function () {
+    sessionTime++
+    console.log('experience time: ' + sessionTime + ' s')
+    if(sessionTime == sessionLength){
+        console.log('the experience is over')
+        window.location.href = '/'
+    }
+}, 1000)
