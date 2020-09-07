@@ -97,6 +97,9 @@ io.on('connection', function(socket){
 		let message = new OSC.Message(['swipespeed'], data.speed.toString())
 		osc.send(message, {host: 'localhost'})
 	})
+	socket.on('double tap', function(data){
+		console.log(data)
+	})
 
 	// osc listener inside socket connection
 	osc.on('/screenshot', message => {

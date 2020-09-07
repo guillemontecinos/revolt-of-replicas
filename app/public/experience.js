@@ -16,6 +16,8 @@ let path = "/feed-content/feed-content.json"
 const today = new Date()
 const week = 7 * 24 * 60 * 60 * 1000 //ms in a week 
 
+let timeout, lastTap = 0
+
 // Source: https://socket.io/docs/#Using-with-Express
 // TODO: update this address with the current IP
 let socket = io.connect('http://192.168.1.4')
@@ -73,16 +75,27 @@ fetch(path)
                         }
                         i += 3                    
                     }
-                    
-                    // TODO: See how to read touch events out of here so we have the actual direciton and speed of the gesture
                 }
             })
-    });
+    })
 
+    
+
+// set timer to end the experiencia once it has been started
+setInterval(function () {
+    sessionTime++
+    console.log('experience time: ' + sessionTime + ' s')
+    if(sessionTime == sessionLength){
+        console.log('the experience is over')
+        window.location.href = '/'
+    }
+}, 1000)
+
+// Creates and appends elements on instagram feed
 function appendDivElement(jsonObject, isScreenshot){
     let user
     if(isScreenshot){
-        user = 'therevoltofreplicas'
+        user = 'larevueltadelasreplicas'
     }
     else{
         if(jsonObject.__typename == "GraphVideo") return
@@ -139,6 +152,22 @@ function appendDivElement(jsonObject, isScreenshot){
         let strLen = str.length
         contentImg.src = '/feed-content/' + str[strLen - 1].split('?')[0]
     }
+
+    // code to detect double tap
+    // source code: https://stackoverflow.com/questions/8825144/detect-double-tap-on-ipad-or-iphone-screen-using-javascript
+    content.addEventListener("touchend", function(e) {
+        var currentTime = new Date().getTime();
+        var tapLength = currentTime - lastTap;        
+
+        e.preventDefault();
+        clearTimeout(timeout);
+
+        if(tapLength < 500 && tapLength > 0){
+            //Double Tap
+            socket.emit('double tap', 'double tapped')
+        }
+        lastTap = currentTime;
+    })
     
     // creates cardFooter and components =========================
     let cardFooter = document.createElement('div')
@@ -292,13 +321,3 @@ const months = [
     'November',
     'December'
 ]
-
-// set timer to end the experiencia once it has been started
-setInterval(function () {
-    sessionTime++
-    console.log('experience time: ' + sessionTime + ' s')
-    if(sessionTime == sessionLength){
-        console.log('the experience is over')
-        window.location.href = '/'
-    }
-}, 1000)
