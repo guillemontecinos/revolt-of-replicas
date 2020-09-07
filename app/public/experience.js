@@ -9,7 +9,7 @@ let screenshotCue = 22
 let screenshotDisplay = 0
 
 let sessionTime = 0
-const sessionLength = 10 // in seconds
+const sessionLength = 20 // in seconds
 
 let path = "/feed-content/feed-content.json"
 
@@ -18,7 +18,7 @@ const week = 7 * 24 * 60 * 60 * 1000 //ms in a week
 
 // Source: https://socket.io/docs/#Using-with-Express
 // TODO: update this address with the current IP
-let socket = io.connect('http://192.168.1.6')
+let socket = io.connect('http://192.168.1.4')
 socket.on('connection answer', function(data){
     console.log(data)
 })
@@ -52,7 +52,7 @@ fetch(path)
                 prevTop = currentTop
 
                 // implements append divs under scroll
-                if ($(window).scrollTop() >= $(document).height() - $(window).height() - 50) {
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
                     // TODO: Improve Instagram look
                     if(screenshotCue > 0){
                         for(let j = 0; j < 2; j++)

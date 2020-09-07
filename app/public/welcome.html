@@ -3,17 +3,28 @@
 <head>
     <meta charset='utf-8'>
     <title>La Revuelta de las Réplicas</title>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/styles-welcome.css" />
 </head>
 <body>
     
 </body>
-    <div class="welcome-text">
-
-    </div>
-    <div class="start-button">
-        <button type="button" class="submit-button" id="submit-button">Comenzar</button>
-    </div>
+    <div class="welcome">
+        <div class="welcome-header">
+            <div class="welcome-image">
+                <img src='/thumbnails/revoltofreplicas-1.jpg'>
+            </div>
+            <div class="welcome-title">
+                La Revuelta de las Réplicas
+            </div>
+        </div>
+        <div class="welcome-instructions">
+            Bienvenide a La Revuelta de las Réplicas, utiliza el feed de Instagram para interactuar con el monumento de Plaza de la Dignidad.
+            <br><br>Presiona el botón para <span class="comenzar">comenzar</span> la experiencia.
+        </div>
+        <div class="start-button">
+            <button type="button" class="submit-button" id="submit-button">COMENZAR</button>
+        </div>
+</div>
     <script>
         let button = document.getElementById('submit-button')
         button.addEventListener('click', callExperience)

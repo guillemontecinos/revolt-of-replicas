@@ -52,11 +52,17 @@ app.use(express.static('public'))
 
 app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/public/welcome.html'))
+	// send osc message to unity to switch to welcome scene
+	let message = new OSC.Message(['scene'], 'welcome')
+	osc.send(message, {host: 'localhost'})
 })
 
 app.get('/experience', function (req, res) {
 	console.log('request to experience received')
-    res.sendFile(path.join(__dirname + '/public/experience.html'))
+	res.sendFile(path.join(__dirname + '/public/experience.html'))
+	// send osc message to unity to switch to experience scene
+	let message = new OSC.Message(['scene'], 'experience')
+	osc.send(message, {host: 'localhost'})
 })
 
 app.get('/reality', function (req, res) {
