@@ -99,6 +99,8 @@ io.on('connection', function(socket){
 	})
 	socket.on('double tap', function(data){
 		console.log(data)
+		let message = new OSC.Message(['doubletap'], data)
+		osc.send(message, {host: 'localhost'})
 	})
 
 	// osc listener inside socket connection

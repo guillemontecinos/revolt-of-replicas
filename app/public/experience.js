@@ -16,6 +16,7 @@ let path = "/feed-content/feed-content.json"
 const today = new Date()
 const week = 7 * 24 * 60 * 60 * 1000 //ms in a week 
 
+// vars for double tap detection
 let timeout, lastTap = 0
 
 // Source: https://socket.io/docs/#Using-with-Express
@@ -77,9 +78,7 @@ fetch(path)
                     }
                 }
             })
-    })
-
-    
+    })    
 
 // set timer to end the experiencia once it has been started
 setInterval(function () {
@@ -99,7 +98,6 @@ function appendDivElement(jsonObject, isScreenshot){
     }
     else{
         if(jsonObject.__typename == "GraphVideo") return
-        // TODO: urls are not working anymore, so images have to be loaded from public folder
         if(jsonObject.username != null && jsonObject.username != 'radiovillafrancia') user = jsonObject.username
         else user = 'plazadeladignidad'
     }
