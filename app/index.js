@@ -9,30 +9,52 @@ const fs = require('fs')
 
 const expressPort = 3000
 
-let imageReg = [
-	__dirname + '/private/0.jpg',
-	__dirname + '/private/1.jpg',
-	__dirname + '/private/2.jpg',
-	__dirname + '/private/3.jpg',
-	__dirname + '/private/4.jpg',
-	__dirname + '/private/5.jpg',
-	__dirname + '/private/6.jpg',
-	__dirname + '/private/7.jpg',
-	__dirname + '/private/8.jpg',
-	__dirname + '/private/9.jpg',
-	__dirname + '/private/10.jpg',
-	__dirname + '/private/11.jpg',
-	__dirname + '/private/12.jpg',
-	__dirname + '/private/13.jpg',
-	__dirname + '/private/14.jpg',
-	__dirname + '/private/15.jpg',
-	__dirname + '/private/16.jpg',
-	__dirname + '/private/17.jpg',
-	__dirname + '/private/18.jpg',
-	__dirname + '/private/19.jpg',
-	__dirname + '/private/20.jpg',
-	__dirname + '/private/21.jpg'
-]
+// let imageReg = [
+// 	__dirname + '/private/0.jpg',
+// 	__dirname + '/private/1.jpg',
+// 	__dirname + '/private/2.jpg',
+// 	__dirname + '/private/3.jpg',
+// 	__dirname + '/private/4.jpg',
+// 	__dirname + '/private/5.jpg',
+// 	__dirname + '/private/6.jpg',
+// 	__dirname + '/private/7.jpg',
+// 	__dirname + '/private/8.jpg',
+// 	__dirname + '/private/9.jpg',
+// 	__dirname + '/private/10.jpg',
+// 	__dirname + '/private/11.jpg',
+// 	__dirname + '/private/12.jpg',
+// 	__dirname + '/private/13.jpg',
+// 	__dirname + '/private/14.jpg',
+// 	__dirname + '/private/15.jpg',
+// 	__dirname + '/private/16.jpg',
+// 	__dirname + '/private/17.jpg',
+// 	__dirname + '/private/18.jpg',
+// 	__dirname + '/private/19.jpg',
+// 	__dirname + '/private/20.jpg',
+// 	__dirname + '/private/21.jpg'
+// ]
+let imageReg = []
+
+//========================================================
+// clear /private 
+//========================================================
+// code source: https://arjunphp.com/how-to-delete-a-file-in-node-js/
+const deleteFolderRecursive = function (directory_path) {
+    if (fs.existsSync(directory_path)) {
+        fs.readdirSync(directory_path).forEach(function (file, index) {
+            var currentPath = path.join(directory_path, file)
+            if (fs.lstatSync(currentPath).isDirectory()) {
+                deleteFolderRecursive(currentPath)
+            } else { 
+                fs.unlinkSync(currentPath) // delete file
+            }
+        })
+    }
+}
+
+// call function by passing directory path
+deleteFolderRecursive(__dirname + '/private')
+//========================================================
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -47,7 +69,6 @@ const osc = new OSC({ plugin: new OSC.DatagramPlugin(options) })
 //=============
 // get and post
 //=============
-// TODO: learn how to listen json fetch and respond to it
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
@@ -77,9 +98,9 @@ app.get('/reality', function (req, res) {
 })
 
 
-//=====================
-// osc connection to oF
-//=====================
+//========================
+// osc connection to unity
+//========================
 // Source: https://github.com/adzialocha/osc-js/wiki/Node.js-Server
 osc.on('open', function(){
 	osc.send(new OSC.Message('/hello'), { host: 'localhost'})
