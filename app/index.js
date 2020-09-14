@@ -9,30 +9,6 @@ const fs = require('fs')
 
 const expressPort = 3000
 
-// let imageReg = [
-// 	__dirname + '/private/0.jpg',
-// 	__dirname + '/private/1.jpg',
-// 	__dirname + '/private/2.jpg',
-// 	__dirname + '/private/3.jpg',
-// 	__dirname + '/private/4.jpg',
-// 	__dirname + '/private/5.jpg',
-// 	__dirname + '/private/6.jpg',
-// 	__dirname + '/private/7.jpg',
-// 	__dirname + '/private/8.jpg',
-// 	__dirname + '/private/9.jpg',
-// 	__dirname + '/private/10.jpg',
-// 	__dirname + '/private/11.jpg',
-// 	__dirname + '/private/12.jpg',
-// 	__dirname + '/private/13.jpg',
-// 	__dirname + '/private/14.jpg',
-// 	__dirname + '/private/15.jpg',
-// 	__dirname + '/private/16.jpg',
-// 	__dirname + '/private/17.jpg',
-// 	__dirname + '/private/18.jpg',
-// 	__dirname + '/private/19.jpg',
-// 	__dirname + '/private/20.jpg',
-// 	__dirname + '/private/21.jpg'
-// ]
 let imageReg = []
 
 //========================================================
@@ -66,9 +42,9 @@ server.listen(httpPort)
 const options = { send: { port: 12345 } }
 const osc = new OSC({ plugin: new OSC.DatagramPlugin(options) })
 
-//=============
+//====================================================
 // get and post
-//=============
+//====================================================
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
@@ -114,7 +90,7 @@ io.on('connection', function(socket){
 	console.log('Device Connected')
 	socket.emit('connection answer', {hello: 'world'})
 	socket.on('speed event', function(data){
-		console.log(data.my + ' at ' + data.speed + ' px/s')
+		// console.log(data.my + ' at ' + data.speed + ' px/s')
 		let message = new OSC.Message(['swipespeed'], data.speed.toString())
 		osc.send(message, {host: 'localhost'})
 	})
@@ -126,6 +102,8 @@ io.on('connection', function(socket){
 
 	// osc listener inside socket connection
 	osc.on('/screenshot', message => {
+		console.log(message)
+		// TODO: check why it's receiving two messages
 		let aux = message.args[0].split('/')
 		let localPath =  __dirname + '/private/' + aux[aux.length - 1]
 		setTimeout(function(){
@@ -133,10 +111,13 @@ io.on('connection', function(socket){
 				if (err) throw err;
 				// this is to avoid duplications in the image reg because as the osc.on is declared inside the io.on, every event gets duplicated
 				if(imageReg.length == 0 || imageReg.length > 0 && imageReg[imageReg.length - 1] != localPath) {
-					imageReg.push(localPath)
-					console.log('receiving: ' + message.args[0])
+					imageReg.push(localPath)	
 				} 
-				socket.emit('screenshot added', {index: ''})
+				let arr = message.args[0].split('/')
+				let len = arr.length
+				let file = arr[len - 1]
+				console.log('receiving: ' + file)
+				socket.emit('screenshot added', {id: file.split('.')[0]})
 			})
 		}, 300)
 	})

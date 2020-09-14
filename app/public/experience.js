@@ -5,11 +5,10 @@ let jDat
 let prevTime = 0
 let prevTop = 0
 
-let screenshotCue = 22
-let screenshotDisplay = 0
+let screenshots = []
 
 let sessionTime = 0
-const sessionLength = 20 // in seconds
+const sessionLength = 120 // in seconds
 
 let path = "/feed-content/feed-content.json"
 
@@ -21,14 +20,14 @@ let timeout, lastTap = 0
 
 // Source: https://socket.io/docs/#Using-with-Express
 // TODO: update this address with the current IP
-let socket = io.connect('http://192.168.1.4')
+let socket = io.connect('http://192.168.1.3')
 socket.on('connection answer', function(data){
     console.log(data)
 })
 
 socket.on('screenshot added', function(data){
-    screenshotCue++
-    console.log('screenshotCue: ' + screenshotCue)
+    console.log(data)
+    screenshots.push(data)
 })
 
 fetch(path)
@@ -57,16 +56,17 @@ fetch(path)
                 // implements append divs under scroll
                 if ($(window).scrollTop() >= $(document).height() - $(window).height() - 100) {
                     // TODO: Improve Instagram look
-                    if(screenshotCue > 0){
-                        for(let j = 0; j < 2; j++)
+                    if(screenshots.length > 0){
+                        appendDivElement(null, true)
+                        i++
+
+                        let randLen = 1 + Math.floor(Math.random() * 2)
+                        for(let j = 0; j < randLen; j++)
                         {
                             if(j + i >= datLen) i = 0
                             appendDivElement(jDat.GraphImages[j + i][1], false)
                         }
-                        i += 2
-                        appendDivElement(null, true)
-                        screenshotCue--
-                        console.log('screenshotCue: ' + screenshotCue)
+                        i += randLen
                     }
                     else{
                         for(let j = 0; j < 3; j++)
@@ -140,9 +140,8 @@ function appendDivElement(jsonObject, isScreenshot){
     if(isScreenshot)
     {
         // get from certain path
-        contentImg.src = '/reality?id=' + screenshotDisplay
-        screenshotDisplay++ 
-        console.log('screenshotDisplay: ' + screenshotDisplay)
+        contentImg.src = '/reality?id=' + screenshots[0].id
+        screenshots.splice(0, 1)
     }
     else
     {
