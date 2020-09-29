@@ -8,7 +8,7 @@ let prevTop = 0
 let screenshots = []
 
 let sessionTime = 0
-const sessionLength = 120 // in seconds
+const sessionLength = 90 // in seconds
 
 let path = "/feed-content/feed-content.json"
 
@@ -19,8 +19,7 @@ const week = 7 * 24 * 60 * 60 * 1000 //ms in a week
 let timeout, lastTap = 0
 
 // Source: https://socket.io/docs/#Using-with-Express
-// TODO: update this address with the current IP
-let socket = io.connect('http://192.168.1.3')
+let socket = io.connect(location.host.split(':')[0])
 socket.on('connection answer', function(data){
     console.log(data)
 })

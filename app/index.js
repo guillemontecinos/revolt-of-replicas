@@ -32,6 +32,30 @@ const deleteFolderRecursive = function (directory_path) {
 deleteFolderRecursive(__dirname + '/private')
 //========================================================
 
+//========================================================
+// get current ip
+//========================================================
+const { networkInterfaces } = require('os');
+
+const nets = networkInterfaces();
+const results = Object.create(null); // or just '{}', an empty object
+
+for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+        // skip over non-ipv4 and internal (i.e. 127.0.0.1) addresses
+        if (net.family === 'IPv4' && !net.internal) {
+            if (!results[name]) {
+                results[name] = [];
+            }
+
+            results[name].push(net.address);
+        }
+    }
+}
+const localIp = results.en0[0]
+console.log(localIp)
+
+//========================================================
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // HTTP framework for socket
@@ -52,6 +76,7 @@ app.get('/', function (req, res) {
 	// send osc message to unity to switch to welcome scene
 	let message = new OSC.Message(['scene'], 'welcome')
 	osc.send(message, {host: 'localhost'})
+	while(imageReg.length > 0) imageReg.pop()
 })
 
 app.get('/experience', function (req, res) {
@@ -127,4 +152,4 @@ app.listen(expressPort, function () {
 	console.log("Example app listening on port " + expressPort)
 })
 
-osc.open({ port: 9000 }) // bind socket to localhost:9000
+osc.open({ port: 9001 }) // bind socket to localhost:9000
