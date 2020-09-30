@@ -53,16 +53,28 @@ table {
 }
 
 header {
-  background: #fff;
+  background: white;
 }
 
 .container {
-  background: #fafafa;
+  background: white;
   position: absolute;
   width: 100%;
-  top: 50px;
-  bottom: 0;
   font-family: 'Helvetica Neue';
+}
+
+.container .instagram-header {
+  background: white;
+  width: 100%;
+  height: 110px;
+  margin-top: 30px;
+}
+
+.container .instagram-header img {
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container .card {
