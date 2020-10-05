@@ -32,31 +32,8 @@ const deleteFolderRecursive = function (directory_path) {
 deleteFolderRecursive(__dirname + '/private')
 //========================================================
 
-//========================================================
-// get current ip
-//========================================================
-const { networkInterfaces } = require('os');
-
-const nets = networkInterfaces();
-const results = Object.create(null); // or just '{}', an empty object
-
-for (const name of Object.keys(nets)) {
-    for (const net of nets[name]) {
-        // skip over non-ipv4 and internal (i.e. 127.0.0.1) addresses
-        if (net.family === 'IPv4' && !net.internal) {
-            if (!results[name]) {
-                results[name] = [];
-            }
-
-            results[name].push(net.address);
-        }
-    }
-}
-const localIp = results.en0[0]
-console.log(localIp)
-
-//========================================================
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 // HTTP framework for socket
 const httpPort = 80
@@ -98,6 +75,18 @@ app.get('/reality', function (req, res) {
 	}
 })
 
+app.get('/post-experience', function (req, res) {
+	// if(imageReg.length == 0){
+	// 	res.sendFile(path.join(__dirname + '/public/welcome.html'))
+	// }
+	// else {
+		res.sendFile(path.join(__dirname + '/public/post-experience.html'))
+	// }
+})
+
+app.post('/post-to-instagram', function (req, res){
+	console.log(req.body)
+})
 
 //========================
 // osc connection to unity

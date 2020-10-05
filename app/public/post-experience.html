@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>La Revuelta de las Réplicas</title>
+    <link rel="stylesheet" href="styles/styles-post-experience.css" />
+</head>
+<body>
+    
+</body>
+    <div class="post-exp">
+        <div class="header">
+            <!-- <div class="header-image">
+                <img src='/thumbnails/revoltofreplicas-1.jpg'>
+            </div> -->
+            <div class="title">
+                La Revuelta de las Réplicas
+            </div>
+        </div>
+        <div class="instructions">
+            Publica tu versión de La Revuelta de las Réplicas en Instagram, ingresando tu comentario y cuenta de Instagram.
+        </div>
+        <div class="data">
+            <div class="comment-container">
+                <textarea id="comment" class="comment" placeholder="Escribe tu comentario"></textarea>
+            </div>
+            <div class="handler-container">
+                <input type="text" id="handler" class="handler" placeholder="@larevueltadelasreplicas">
+            </div>
+        </div>  
+        <div class="election-buttons">
+            <button type="button" class="submit-button" id="submit-button">PUBLICAR</button>
+            <button type="button" class="skip-button" id="skip-button">SALTAR</button>
+        </div>
+</div>
+    <script>
+        let commentTextArea = document.getElementById('comment')
+        let handlerInput = document.getElementById('handler')
+
+        let submitButton = document.getElementById('submit-button')
+        let skipButton = document.getElementById('skip-button')
+        
+        submitButton.addEventListener('click', postToIg)
+        skipButton.addEventListener('click', backToWelcome)
+
+        function postToIg() {
+            // post to serverlet 
+            console.log('post to instagram')
+
+            let comment, handler
+            comment = commentTextArea.value
+            handler = handlerInput.value
+
+            let data = JSON.stringify({'comment':comment, 'handler':handler})
+            let xhr = new XMLHttpRequest()
+            xhr.open('POST', '/post-to-instagram', true)
+            xhr.setRequestHeader("Content-Type", "application/json")
+
+            if (comment.length > 0 && handler.length > 0) {
+                xhr.send(data)    
+            }
+            
+            backToWelcome()
+        }
+
+        function backToWelcome() {
+            window.location.href = "/"
+        }
+    </script>
+</html>
