@@ -34,3 +34,8 @@
 </p>
 
 9. Go to Ableton and hit play (or the spacebar)
+
+## Reference
+<p align="center">
+  <img src="https://github.com/guillemontecinos/revolt-of-replicas/blob/master/assets/system-diagram.jpg" align="middle" width="80%">
+</p>
