@@ -22,13 +22,13 @@
 3. Run the unity app (callde `casa-amalia-build.app`)
 4. Check your comuper's IP by clicking on *Networks* (on the upper right side of your laptop) and then *Open Network Preferences*. Under **Connected** you'll see the IP address.
 <p align="center">
-  <img src="https://github.com/guillemontecinos/revolt-of-replicas/assets/network-preferences.png" align="middle" width="80%">
+  <img src="https://github.com/guillemontecinos/revolt-of-replicas/blob/master/assets/network-preferences.png" align="middle" width="80%">
 </p>
 
 5. Open your iPhone preferences, go to `Settings` -> `Display & Brightness` -> `Auto-Lock` and select `Never`.
 6. Open Safari and type the IP address.
 <p align="center">
-  <img src="https://github.com/guillemontecinos/revolt-of-replicas/assets/tutorial-documentation.png" align="middle" width="80%">
+  <img src="https://github.com/guillemontecinos/revolt-of-replicas/blob/master/assets/tutorial-documentation.png" align="middle" width="80%">
 </p>
 
 7. After the experience's main page is loaded, click on the font size icon (as shown below) and click `Hide Toolbar`.
