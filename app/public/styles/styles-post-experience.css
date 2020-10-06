@@ -78,33 +78,35 @@ table {
 .post-exp .header .title {
   color: #FFFFFF;
   font-size: 70px;
-  font-weight: normal;
+  font-weight: bold;
   margin-top: 69px;
   text-align: center;
 }
 
 .post-exp .instructions {
+  width: 85%;
+  margin: auto;
   color: #FFFFFF;
-  font-size: 60px;
+  font-size: 55px;
   font-weight: normal;
-  margin-top: 50px;
-  margin-left: 80px;
-  margin-right: 80px;
+  margin-top: 70px;
   text-align: center;
 }
 
 .post-exp .data {
+  width: 85%;
+  margin: auto;
   margin-top: 80px;
-  margin-left: 100px;
-  margin-right: 100px;
 }
 
 .post-exp .data .comment-container {
   width: 100%;
-  height: 500px;
+  height: 600px;
 }
 
 .post-exp .data .comment-container .comment {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
   height: 100%;
   border-radius: 15px;
@@ -118,12 +120,14 @@ table {
 }
 
 .post-exp .data .handler-container {
-  margin-top: 50px;
   width: 100%;
-  height: 70px;
+  height: 80px;
+  padding-top: 50px;
 }
 
 .post-exp .data .handler-container .handler {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   width: 100%;
   height: 100%;
   border-radius: 15px;
@@ -137,11 +141,13 @@ table {
 }
 
 .post-exp .election-buttons {
-  margin: 100px;
+  width: 85%;
+  margin: auto;
+  margin-top: 80px;
 }
 
 .post-exp .election-buttons .submit-button {
-  width: 48%;
+  width: 49.5%;
   height: 180px;
   font-size: 60px;
   background-color: #FFFFFF;
@@ -149,10 +155,11 @@ table {
 }
 
 .post-exp .election-buttons .skip-button {
-  width: 48%;
+  width: 49.5%;
   height: 180px;
   font-size: 60px;
   background-color: #FFFFFF;
   border-radius: 20px;
+  float: right;
 }
 /*# sourceMappingURL=styles-post-experience.css.map */

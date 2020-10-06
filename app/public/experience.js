@@ -8,7 +8,7 @@ let prevTop = 0
 let screenshots = []
 
 let sessionTime = 0
-const sessionLength = 900 // in seconds
+const sessionLength = 20 // in seconds
 
 let path = "/feed-content/feed-content.json"
 
@@ -85,8 +85,8 @@ setInterval(function () {
     console.log('experience time: ' + sessionTime + ' s')
     if(sessionTime == sessionLength){
         console.log('the experience is over')
-        // window.location.href = '/post-experience'
-        window.location.href = '/'
+        window.location.href = '/post-experience'
+        // window.location.href = '/'
     }
 }, 1000)
 

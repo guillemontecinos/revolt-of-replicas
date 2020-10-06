@@ -44,23 +44,35 @@
         skipButton.addEventListener('click', backToWelcome)
 
         function postToIg() {
-            // post to serverlet 
-            console.log('post to instagram')
-
-            let comment, handler
-            comment = commentTextArea.value
-            handler = handlerInput.value
-
-            let data = JSON.stringify({'comment':comment, 'handler':handler})
-            let xhr = new XMLHttpRequest()
-            xhr.open('POST', '/post-to-instagram', true)
-            xhr.setRequestHeader("Content-Type", "application/json")
-
+            let comment = commentTextArea.value
+            let handler = handlerInput.value
             if (comment.length > 0 && handler.length > 0) {
-                xhr.send(data)    
+                // check if handler starts with @
+                if(handler[0] != '@'){
+                    handler = '@' + handler
+                }
+                let data = JSON.stringify({'comment':commentTextArea.value, 'handler':handlerInput.value})
+                let xhr = new XMLHttpRequest()
+                xhr.open('POST', '/post-to-instagram', true)
+                xhr.setRequestHeader("Content-Type", "application/json")
+                console.log('post to instagram')
+                xhr.send(data)
+                backToWelcome()
             }
-            
-            backToWelcome()
+            else if(comment.length > 0 && handler.length == 0){
+                handlerInput.value = ''
+                handlerInput.placeholder = '@larevueltadelasreplicas'
+            }
+            else if(comment.length == 0 && handler.length > 0){
+                commentTextArea.value = ''
+                commentTextArea.placeholder = 'Asegúrate de escribir un comentario e ingresar tu usuario de instagram antes de publicar.'
+            }
+            else {
+                commentTextArea.value = ''
+                commentTextArea.placeholder = 'Asegúrate de escribir un comentario e ingresar tu usuario de instagram antes de publicar.'
+                handlerInput.value = ''
+                handlerInput.placeholder = '@larevueltadelasreplicas'
+            }
         }
 
         function backToWelcome() {

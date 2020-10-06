@@ -6,10 +6,18 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const OSC = require('osc-js')
 const fs = require('fs')
+const Instagram = require('instagram-web-api')
 
 const expressPort = 3000
 
 let imageReg = []
+
+//=======================================================
+// Ig web api params
+//=======================================================
+const igUsername = 'larevueltadelasreplicas'
+const igPassword = 'PineraCuliao19'
+const client = new Instagram({username: igUsername, password: igPassword})
 
 //========================================================
 // clear /private 
@@ -53,7 +61,6 @@ app.get('/', function (req, res) {
 	// send osc message to unity to switch to welcome scene
 	let message = new OSC.Message(['scene'], 'welcome')
 	osc.send(message, {host: 'localhost'})
-	while(imageReg.length > 0) imageReg.pop()
 })
 
 app.get('/experience', function (req, res) {
@@ -62,6 +69,8 @@ app.get('/experience', function (req, res) {
 	// send osc message to unity to switch to experience scene
 	let message = new OSC.Message(['scene'], 'experience')
 	osc.send(message, {host: 'localhost'})
+	// clear imageReg when experience scene is loaded
+	while(imageReg.length > 0) imageReg.pop()
 })
 
 app.get('/reality', function (req, res) {
@@ -76,16 +85,25 @@ app.get('/reality', function (req, res) {
 })
 
 app.get('/post-experience', function (req, res) {
-	// if(imageReg.length == 0){
-	// 	res.sendFile(path.join(__dirname + '/public/welcome.html'))
-	// }
-	// else {
+	if(imageReg.length == 0){
+		res.sendFile(path.join(__dirname + '/public/welcome.html'))
+	}
+	else {
+		let message = new OSC.Message(['scene'], 'welcome')
+		osc.send(message, {host: 'localhost'})
 		res.sendFile(path.join(__dirname + '/public/post-experience.html'))
-	// }
+	}
 })
 
 app.post('/post-to-instagram', function (req, res){
 	console.log(req.body)
+	// TODO: process info to create the post
+	const photo = imageReg[imageReg.length - 1]
+	client
+	.login()
+	.then(() => {
+		client.uploadPhoto({ photo: photo, caption: req.body.comment, post: 'feed' })
+	})
 })
 
 //========================
