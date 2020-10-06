@@ -26,10 +26,11 @@
 </p>
 
 5. Open your iPhone preferences, go to `Settings` -> `Display & Brightness` -> `Auto-Lock` and select `Never`.
-6. Open Safari and type the IP address.
-7. After the experience's main page is loaded, click on the font size icon (as shown below) and click `Hide Toolbar`.
+6. Connect your iPhone to the **same network** of the laptop.
+7. Open Safari and type the IP address.
+8. After the experience's main page is loaded, click on the font size icon (as shown below) and click `Hide Toolbar`.
 <p align="center">
   <img src="https://github.com/guillemontecinos/revolt-of-replicas/blob/master/assets/tutorial-documentation.png" align="middle" width="80%">
 </p>
 
-8. Go to Ableton and hit play (or the spacebar)
+9. Go to Ableton and hit play (or the spacebar)
