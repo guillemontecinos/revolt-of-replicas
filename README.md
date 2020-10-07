@@ -19,8 +19,8 @@
 ## Running the Installation
 1. Open the Ableton session. You'll see three automated sliders moving by them selves. It's ok.
 2. On your terminal go to `/app` and run the server by typing `$ node index.js`
-3. Run the unity app (callde `casa-amalia-build.app`)
-4. Check your comuper's IP by clicking on *Networks* (on the upper right side of your laptop) and then *Open Network Preferences*. Under **Connected** you'll see the IP address.
+3. Run the unity app (called `casa-amalia-build.app`)
+4. Check your comuper's IP by clicking on *Networks* (on the upper right end of the screen) -> *Open Network Preferences*. Under **Connected** you'll see the IP address.
 <p align="center">
   <img src="https://github.com/guillemontecinos/revolt-of-replicas/blob/master/assets/network-preferences.png" align="middle" width="80%">
 </p>
