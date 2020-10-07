@@ -8,7 +8,7 @@ let prevTop = 0
 let screenshots = []
 
 let sessionTime = 0
-const sessionLength = 20 // in seconds
+const sessionLength = 60 // in seconds
 
 let path = "/feed-content/feed-content.json"
 
@@ -234,11 +234,17 @@ function appendDivElement(jsonObject, isScreenshot){
     timeDisplay.className = "time-display"
 
     if(isScreenshot) {
-        timeDisplay.innerText = months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear()
+        // english
+        // timeDisplay.innerText = months[today.getMonth()] + ' ' + today.getDate() + ', ' + today.getFullYear()
+        // spanish
+        timeDisplay.innerText =  today.getDate() + ' de ' + months[today.getMonth()]  + ' de ' + today.getFullYear()
     }
     else {
         let dt = new Date(Number(jsonObject.taken_at_timestamp) * 1000)
-        timeDisplay.innerText = months[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear()
+        // english
+        // timeDisplay.innerText = months[dt.getMonth()] + ' ' + dt.getDate() + ', ' + dt.getFullYear()
+        // spanish
+        timeDisplay.innerText = dt.getDate() + ' de ' + months[dt.getMonth()] + ' de ' + dt.getFullYear()
     }
 
     // appends cardHeader components =========================
@@ -326,17 +332,32 @@ const captions = [
     'Nuestro modo de reacción al espacio no es geométrico, solo nuestro modo de abstracción lo es. Existe una oposición establecida entre nuestra concepción del espacio - abstracto, mental y geométrico - y nuestra percepción del espacio - concreto, material y físico.'
 ]
 
+// const months = [
+//     'January',
+//     'February',
+//     'March',
+//     'April',
+//     'May',
+//     'June',
+//     'July',
+//     'August',
+//     'September',
+//     'October',
+//     'November',
+//     'December'
+// ]
+
 const months = [
-    'January',
-    'February',
-    'March',
-    'Abril',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre'
 ]

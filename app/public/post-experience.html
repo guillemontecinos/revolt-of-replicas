@@ -51,7 +51,8 @@
                 if(handler[0] != '@'){
                     handler = '@' + handler
                 }
-                let data = JSON.stringify({'comment':commentTextArea.value, 'handler':handlerInput.value})
+                comment += '\n.\n.\n.\nComentario publicado por ' + handler + ' en exhibición realizada en galeriacasa_amalia'
+                let data = JSON.stringify({'comment':comment})
                 let xhr = new XMLHttpRequest()
                 xhr.open('POST', '/post-to-instagram', true)
                 xhr.setRequestHeader("Content-Type", "application/json")
