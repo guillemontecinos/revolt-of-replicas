@@ -15,10 +15,10 @@
 3. Download the Ableton session and keep it on its the same folder
 ### Note
 * It doesn't matter if the three folders are separated, just keep each app on its folder because there are dependencies inside.
-## Running the Installation
 
+## Running the Installation
 1. Open the Ableton session. You'll see three automated sliders moving by them selves. It's ok.
-2. On your terminal go to `/app` and run the server by typing `node index.js``
+2. On your terminal go to `/app` and run the server by typing `node index.js`
 3. Run the unity app (callde `casa-amalia-build.app`)
 4. Check your comuper's IP by clicking on *Networks* (on the upper right side of your laptop) and then *Open Network Preferences*. Under **Connected** you'll see the IP address.
 <p align="center">
