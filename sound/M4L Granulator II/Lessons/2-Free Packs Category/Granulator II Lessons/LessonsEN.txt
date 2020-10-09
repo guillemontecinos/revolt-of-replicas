@@ -1,0 +1,28 @@
+$Page Granulator II by Monolake
+$TargetName Granulator II by Monolake
+$If Product 70
+roberthenke260x260.png
+
+*Welcome to the Granulator II by Monolake.*
+
+Sound artist Robert Henke created the /Granulator,/ a granular synthesis-based sample playback instrument.
+
+*What is Granular Synthesis?*
+Granular synthesis is a technique that involves dividing a sample into very short pieces, and then playing the pieces back superimposed and crossfaded with one another. These pieces, or "grains," are usually under 50 milliseconds long and sound like short clicks when heard individually. But when layered together, grains can produce lush textures with rich modulation possibilities.
+
+*Using the Granulator II*
+Granulator.png
+To use the Granulator II, drag a sample onto its waveform display. You can then adjust the length of the grains and the density of their overlap with the *Grain* control. The playback position within the soundfile is set with the *FilePos* knob and can be modulated randomly or via the built-in LFO.
+
+In addition to controls that influence the playback of the grains, there are also a number of "classical" synthesis parameters such as an ADSR envelope, two multimode filters and an FM oscillator that can dramatically alter the overall timbre.
+
+*Granulator II Companion Device*
+GranulatorInput.png
+Granulator comes with a companion device called /GranulatorInput/ that enables live input functionality for the Granulator. When the GranulatorInput device is on a track, any audio on that track can be captured in real-time by pressing Granulator's *Grab* button. The captured audio is then loaded into the Granulator automatically. To save the audio you've grabbed, press Granulator's *Write* button.
+
+
+When you're finished with this lesson, $Link check out the other Max for Live lessons <Lesson:Internal/AutoToc>.
+
+Take a look at more community-made Max for Live devices at $Link maxforlive.com <http://maxforlive.com>.
+
+$Comment Status: No translation
