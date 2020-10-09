@@ -1,5 +1,4 @@
 /node_modules
 /private
-/public/feed-content
 *.scss
 *.css.map
