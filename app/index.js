@@ -123,7 +123,8 @@ io.on('connection', function(socket){
 	socket.emit('connection answer', {hello: 'world'})
 	socket.on('speed event', function(data){
 		// console.log(data.my + ' at ' + data.speed + ' px/s')
-		let message = new OSC.Message(['swipespeed'], data.speed.toString())
+		if(data.speed === null) let message = new OSC.Message(['swipespeed'], '0.0')
+		else let message = new OSC.Message(['swipespeed'], data.speed.toString())
 		osc.send(message, {host: 'localhost'})
 	})
 	socket.on('double tap', function(data){
