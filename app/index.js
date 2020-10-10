@@ -122,9 +122,15 @@ io.on('connection', function(socket){
 	console.log('Device Connected')
 	socket.emit('connection answer', {hello: 'world'})
 	socket.on('speed event', function(data){
-		// console.log(data.my + ' at ' + data.speed + ' px/s')
-		if(data.speed === null) let message = new OSC.Message(['swipespeed'], '0.0')
-		else let message = new OSC.Message(['swipespeed'], data.speed.toString())
+		console.log(data.my + ' at ' + data.speed + ' px/s')
+		let message
+		try {
+			message = new OSC.Message(['swipespeed'], data.speed.toString())
+		}
+		catch (err) {
+			console.log(err)
+			message = new OSC.Message(['swipespeed'], '0.0')
+		}
 		osc.send(message, {host: 'localhost'})
 	})
 	socket.on('double tap', function(data){
