@@ -30,14 +30,21 @@ const deleteFolderRecursive = function (directory_path) {
             if (fs.lstatSync(currentPath).isDirectory()) {
                 deleteFolderRecursive(currentPath)
             } else { 
-                fs.unlinkSync(currentPath) // delete file
+				fs.unlinkSync(currentPath) // delete file
             }
         })
     }
 }
 
-// call function by passing directory path
-deleteFolderRecursive(__dirname + '/private')
+// checks if /private existes and clears it, otherwise creates it
+let privatePath = __dirname + '/private' 
+if(fs.existsSync(privatePath)){
+	deleteFolderRecursive(privatePath)
+}
+else{
+	fs.mkdirSync(privatePath)
+}
+
 //========================================================
 
 app.use(bodyParser.urlencoded({ extended: false }))
