@@ -81,13 +81,22 @@ app.get('/experience', function (req, res) {
 })
 
 app.get('/reality', function (req, res) {
-	if(imageReg.length > 0) {
-		let reqPath = path.join(imageReg[Number(req.query.id)])
+	if(Number(req.query.id) == 800){
+		// request of last screenshot on post experience
+		let reqPath = path.join(imageReg[imageReg.length - 1])
 		console.log('sending: ' + reqPath)
 		res.sendFile(reqPath)
 	}
-	else {
-		res.err
+	else{
+		// request of screenshots on experience
+		if(imageReg.length > 0) {
+			let reqPath = path.join(imageReg[Number(req.query.id)])
+			console.log('sending: ' + reqPath)
+			res.sendFile(reqPath)
+		}
+		else {
+			res.err
+		}
 	}
 })
 
@@ -103,8 +112,6 @@ app.get('/post-experience', function (req, res) {
 })
 
 app.post('/post-to-instagram', function (req, res){
-	console.log(req.body)
-	// TODO: process info to create the post
 	const photo = imageReg[imageReg.length - 1]
 	client
 	.login()
@@ -129,7 +136,7 @@ io.on('connection', function(socket){
 	console.log('Device Connected')
 	socket.emit('connection answer', {hello: 'world'})
 	socket.on('speed event', function(data){
-		console.log(data.my + ' at ' + data.speed + ' px/s')
+		// console.log(data.my + ' at ' + data.speed + ' px/s')
 		let message
 		try {
 			message = new OSC.Message(['swipespeed'], data.speed.toString())

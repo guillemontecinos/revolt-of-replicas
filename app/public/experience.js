@@ -8,7 +8,7 @@ let prevTop = 0
 let screenshots = []
 
 let sessionTime = 0
-const sessionLength = 60 // in seconds
+const sessionLength = 30 // in seconds
 
 let path = "/feed-content/feed-content.json"
 
@@ -312,24 +312,24 @@ function appendDivElement(jsonObject, isScreenshot){
 
 const captions = [
 
-    'El territorio ya no precede al mapa ni le sobrevive.',
-    'La realidad ni siquiera es real puesto que nada imaginario lo envuelve.',
-    'La simulación amenaza a la diferencia entre lo \"verdadero\" y lo falso, lo \"real\" y lo \"imaginario\".',
-    'El paso de signos que disimulan algo a signos que disimulan que no hay nada marca un giro decisivo.',
-    'La ilusión ya no es posible, porque lo real ya no es posible.',
-    'El hiperrealismo de la simulación se traduce por el parecido alucinatorio de lo real consigo mismo.',
-    'La ideología sólo corresponde a una corrupción de la realidad mediante signos; la simulación corresponde a un cortocircuito de la realidad y a su duplicación mediante signos.',
-    'No existe lo real: la tecera dimensión es únicamente el imaginario de un mundo bidimensional, mientras que la cuarta es el imaginario de un universo tridimensional.',
-    'Ningún objeto cultural puede retener su poder cuando no existen nuevos ojos para verlo.',
-    'En el proceso de conversión de las prácticas y rituales en meros objetos estéticos, las creencias de culturas anteriores son objetivamente ironizadas, transformadas en artefactos.',
-    'El capitalismo es lo que queda cuando las creencias se han derrumbado a nivel de elaboración ritual y simbólica, y lo único que queda es el consumidor-espectador, caminando penosamente entre ruinas y reliquias.',
-    'El \'realismo\' es análogo a la perspectiva deflacionaria de un depresivo que cree que cualquier estado positivo, cualquier esperanza, es una ilusión peligrosa.',
-    'Para Lacan, lo Real es lo que toda "realidad" debe suprimir; de hecho, la realidad se constituye precisamente a través de esta represión.',
-    'El espacio abstracto está destinado a no durar para siempre y ya contiene el nacimiento de un nuevo espacio dentro de sí mismo.',
-    'Los espacios de apropiación más efectiva son los ocupados por símbolos, la apropiación ofrece la posibilidad de invertir las relaciones y significados sociales y así crear una especie de espacio heterotópico.',
-    'El espacio es un producto social y político.',
-    'El espacio se produce de dos formas: como formación social (modo de producción) y como construcción mental (concepción).',
-    'Nuestro modo de reacción al espacio no es geométrico, solo nuestro modo de abstracción lo es. Existe una oposición establecida entre nuestra concepción del espacio - abstracto, mental y geométrico - y nuestra percepción del espacio - concreto, material y físico.'
+    'El territorio ya no precede al mapa ni le sobrevive. – Jean Baudrillard',
+    'La realidad ni siquiera es real puesto que nada imaginario lo envuelve. – Jean Baudrillard',
+    'La simulación amenaza a la diferencia entre lo \"verdadero\" y lo falso, lo \"real\" y lo \"imaginario\". – Jean Baudrillard',
+    'El paso de signos que disimulan algo a signos que disimulan que no hay nada marca un giro decisivo. – Jean Baudrillard',
+    'La ilusión ya no es posible, porque lo real ya no es posible. – Jean Baudrillard',
+    'El hiperrealismo de la simulación se traduce por el parecido alucinatorio de lo real consigo mismo. – Jean Baudrillard',
+    'La ideología sólo corresponde a una corrupción de la realidad mediante signos; la simulación corresponde a un cortocircuito de la realidad y a su duplicación mediante signos. – Jean Baudrillard',
+    'No existe lo real: la tecera dimensión es únicamente el imaginario de un mundo bidimensional, mientras que la cuarta es el imaginario de un universo tridimensional. – Jean Baudrillard',
+    'Ningún objeto cultural puede retener su poder cuando no existen nuevos ojos para verlo. – Mark Fisher',
+    'En el proceso de conversión de las prácticas y rituales en meros objetos estéticos, las creencias de culturas anteriores son objetivamente ironizadas, transformadas en artefactos. – Mark Fisher',
+    'El capitalismo es lo que queda cuando las creencias se han derrumbado a nivel de elaboración ritual y simbólica, y lo único que queda es el consumidor-espectador, caminando penosamente entre ruinas y reliquias. – Mark Fisher',
+    'El \'realismo\' es análogo a la perspectiva deflacionaria de un depresivo que cree que cualquier estado positivo, cualquier esperanza, es una ilusión peligrosa. – Mark Fisher',
+    'Para Lacan, lo Real es lo que toda "realidad" debe suprimir; de hecho, la realidad se constituye precisamente a través de esta represión. – Mark Fisher',
+    'El espacio abstracto está destinado a no durar para siempre y ya contiene el nacimiento de un nuevo espacio dentro de sí mismo. – Iain Borden',
+    'Los espacios de apropiación más efectiva son los ocupados por símbolos, la apropiación ofrece la posibilidad de invertir las relaciones y significados sociales y así crear una especie de espacio heterotópico. – Iain Borden',
+    'El espacio es un producto social y político. – Stuart Elden',
+    'El espacio se produce de dos formas: como formación social (modo de producción) y como construcción mental (concepción). – Stuart Elden',
+    'Nuestro modo de reacción al espacio no es geométrico, solo nuestro modo de abstracción lo es. Existe una oposición establecida entre nuestra concepción del espacio - abstracto, mental y geométrico - y nuestra percepción del espacio - concreto, material y físico. – Stuart Elden'
 ]
 
 // const months = [

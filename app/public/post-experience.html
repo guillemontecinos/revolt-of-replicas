@@ -10,74 +10,52 @@
 </body>
     <div class="post-exp">
         <div class="header">
-            <!-- <div class="header-image">
-                <img src='/thumbnails/revoltofreplicas-1.jpg'>
-            </div> -->
             <div class="title">
-                La Revuelta de las Réplicas
+                Gracias por participar!
             </div>
         </div>
         <div class="instructions">
-            Publica tu versión de La Revuelta de las Réplicas en Instagram, ingresando tu comentario y cuenta de Instagram.
+            Contribuye con esta captura de tu interacción al archivo de @larevueltadelasreplicas, ingresando tu nombre o tu @tag de Instagram.
         </div>
         <div class="data">
-            <div class="comment-container">
-                <textarea id="comment" class="comment" placeholder="Escribe tu comentario"></textarea>
-            </div>
             <div class="handler-container">
-                <input type="text" id="handler" class="handler" placeholder="@larevueltadelasreplicas">
+                <input type="text" id="handler" class="handler" placeholder="Nombre o @tag">
+            </div>
+            <div class="image-container">
+                <img src="/reality?id=800">
             </div>
         </div>  
         <div class="election-buttons">
             <button type="button" class="submit-button" id="submit-button">PUBLICAR</button>
-            <button type="button" class="skip-button" id="skip-button">SALTAR</button>
+            <div class="skip-button">
+                <a href="/">Saltar</a>
+            </div>
         </div>
-</div>
     <script>
-        let commentTextArea = document.getElementById('comment')
         let handlerInput = document.getElementById('handler')
-
         let submitButton = document.getElementById('submit-button')
-        let skipButton = document.getElementById('skip-button')
         
         submitButton.addEventListener('click', postToIg)
-        skipButton.addEventListener('click', backToWelcome)
 
         function postToIg() {
-            let comment = commentTextArea.value
             let handler = handlerInput.value
-            if (comment.length > 0 && handler.length > 0) {
-                // check if handler starts with @
-                if(handler[0] != '@'){
-                    handler = '@' + handler
-                }
-                comment += '\n.\n.\n.\nComentario publicado por ' + handler + ' en exhibición realizada en galeriacasa_amalia'
+            if(handler.length > 0){
+                // TODO: checkear @ y agregar @ a casa amalia
+                let comment = 'Contribución de ' + handler + ' para archivo colaborativo de la Revuelta de las Réplicas.'
                 let data = JSON.stringify({'comment':comment})
                 let xhr = new XMLHttpRequest()
                 xhr.open('POST', '/post-to-instagram', true)
                 xhr.setRequestHeader("Content-Type", "application/json")
                 console.log('post to instagram')
                 xhr.send(data)
-                backToWelcome()
-            }
-            else if(comment.length > 0 && handler.length == 0){
-                handlerInput.value = ''
-                handlerInput.placeholder = '@larevueltadelasreplicas'
-            }
-            else if(comment.length == 0 && handler.length > 0){
-                commentTextArea.value = ''
-                commentTextArea.placeholder = 'Asegúrate de escribir un comentario e ingresar tu usuario de instagram antes de publicar.'
+                setInterval(function () {
+                    window.location.href = "/"
+                }, 1500)
+                
             }
             else {
-                commentTextArea.value = ''
-                commentTextArea.placeholder = 'Asegúrate de escribir un comentario e ingresar tu usuario de instagram antes de publicar.'
-                handlerInput.value = ''
-                handlerInput.placeholder = '@larevueltadelasreplicas'
+                handlerInput.placeholder = 'Ingresa nombre o @tag de IG'
             }
-        }
-
-        function backToWelcome() {
-            window.location.href = "/"
         }
     </script>
 </html>
