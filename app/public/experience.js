@@ -85,8 +85,8 @@ setInterval(function () {
     console.log('experience time: ' + sessionTime + ' s')
     if(sessionTime == sessionLength){
         console.log('the experience is over')
-        // window.location.href = '/post-experience'
-        window.location.href = '/'
+        window.location.href = '/post-experience'
+        // window.location.href = '/'
     }
 }, 1000)
 

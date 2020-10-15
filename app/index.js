@@ -101,14 +101,17 @@ app.get('/reality', function (req, res) {
 })
 
 app.get('/post-experience', function (req, res) {
-	if(imageReg.length == 0){
-		res.sendFile(path.join(__dirname + '/public/welcome.html'))
-	}
-	else {
-		let message = new OSC.Message(['scene'], 'welcome')
-		osc.send(message, {host: 'localhost'})
-		res.sendFile(path.join(__dirname + '/public/post-experience.html'))
-	}
+	// uncomment to run with internet connection
+	// if(imageReg.length == 0){
+	// 	res.sendFile(path.join(__dirname + '/public/welcome.html'))
+	// }
+	// else {
+	// 	let message = new OSC.Message(['scene'], 'welcome')
+	// 	osc.send(message, {host: 'localhost'})
+	// 	res.sendFile(path.join(__dirname + '/public/post-experience.html'))
+	// }
+	// uncomment to run without internet connection
+	res.sendFile(path.join(__dirname + '/public/post-experience-2.html'))
 })
 
 app.post('/post-to-instagram', function (req, res){
