@@ -101,7 +101,7 @@ app.get('/reality', function (req, res) {
 })
 
 app.get('/post-experience', function (req, res) {
-	// uncomment to run with internet connection
+	// with internet connection =========================================
 	// if(imageReg.length == 0){
 	// 	res.sendFile(path.join(__dirname + '/public/welcome.html'))
 	// }
@@ -110,8 +110,11 @@ app.get('/post-experience', function (req, res) {
 	// 	osc.send(message, {host: 'localhost'})
 	// 	res.sendFile(path.join(__dirname + '/public/post-experience.html'))
 	// }
-	// uncomment to run without internet connection
+	// with internet connection =========================================
+
+	// without internet connection ======================================
 	res.sendFile(path.join(__dirname + '/public/post-experience-2.html'))
+	// without internet connection ======================================
 })
 
 app.post('/post-to-instagram', function (req, res){
