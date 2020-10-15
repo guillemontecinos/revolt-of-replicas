@@ -39,7 +39,7 @@ const deleteFolderRecursive = function (directory_path) {
 // checks if /private existes and clears it, otherwise creates it
 let privatePath = __dirname + '/private' 
 if(fs.existsSync(privatePath)){
-	deleteFolderRecursive(privatePath)
+	// deleteFolderRecursive(privatePath)
 }
 else{
 	fs.mkdirSync(privatePath)
@@ -83,7 +83,8 @@ app.get('/experience', function (req, res) {
 app.get('/reality', function (req, res) {
 	if(Number(req.query.id) == 800){
 		// request of last screenshot on post experience
-		let reqPath = path.join(imageReg[imageReg.length - 1])
+		// let reqPath = path.join(imageReg[imageReg.length - 1])
+		let reqPath = path.join(__dirname + '/private/2.jpg')
 		console.log('sending: ' + reqPath)
 		res.sendFile(reqPath)
 	}
@@ -106,14 +107,14 @@ app.get('/post-experience', function (req, res) {
 	// 	res.sendFile(path.join(__dirname + '/public/welcome.html'))
 	// }
 	// else {
-	// 	let message = new OSC.Message(['scene'], 'welcome')
-	// 	osc.send(message, {host: 'localhost'})
-	// 	res.sendFile(path.join(__dirname + '/public/post-experience.html'))
+		let message = new OSC.Message(['scene'], 'welcome')
+		osc.send(message, {host: 'localhost'})
+		res.sendFile(path.join(__dirname + '/public/post-experience.html'))
 	// }
 	// with internet connection =========================================
 
 	// without internet connection ======================================
-	res.sendFile(path.join(__dirname + '/public/post-experience-2.html'))
+	// res.sendFile(path.join(__dirname + '/public/post-experience-2.html'))
 	// without internet connection ======================================
 })
 
